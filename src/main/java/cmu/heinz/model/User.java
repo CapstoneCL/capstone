@@ -9,13 +9,17 @@ import java.util.Date;
  */
 
 @Entity
+@Table(name = "USER")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer Id;
+    @Column(name = "ID", nullable = false)
+    private String Id;
 
+    @Column(name = "FirstName", nullable = false)
     private String firstName;
 
+    @Column(name = "LastName", nullable = false)
     private String lastName;
 
     private String gender;
@@ -34,11 +38,11 @@ public class User {
 
     private Integer trainerId;
 
-    public Integer getId() {
+    public String getId() {
         return Id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         Id = id;
     }
 
@@ -124,3 +128,4 @@ public class User {
 
 
 }
+

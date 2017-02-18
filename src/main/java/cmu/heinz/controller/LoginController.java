@@ -3,7 +3,6 @@ package cmu.heinz.controller;
 import cmu.heinz.model.User;
 import cmu.heinz.model.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,16 +23,18 @@ public class LoginController {
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String login(@RequestParam(value = "name", required = false, defaultValue = "World") String name, Model model) {
 
-        User user = userRepository.findOne(Integer.parseInt(name));
+        User user = userRepository.findOne(name);
+
+        System.out.println(user.getId());
+        System.out.println(name);
 
         String lastName = user.getLastName();
-
         String firstName = user.getFirstName();
 
         model.addAttribute("lastName", lastName);
-        model.addAttribute("firstName", firstName);
+        model.addAttribute("firstNa me", firstName);
 
-
+        System.out.println(lastName);
         return "greeting";
 
     }

@@ -1,8 +1,9 @@
 package cmu.heinz.model;
 
 import cmu.heinz.model.User;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 
 /**
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Repository;
  * @AndrewID mouwul
  */
 
-@Repository
-public interface UserRepository extends CrudRepository<User, Integer> {
+@Transactional
+public interface UserRepository extends CrudRepository<User, String> {
+
 }
